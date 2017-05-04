@@ -29,27 +29,27 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
 
     public void test_toString() throws Exception {
         String packageName = "com.app";
-        String url = "http://tapsouq.com";
+        String url = "https://tapsouq.com";
         long startTime = System.currentTimeMillis();
         TrackingInfo trackingInfo = new TrackingInfo(packageName, url, startTime);
 
-        assertEquals("com.app@@http://tapsouq.com@@" + String.valueOf(startTime), trackingInfo.toString());
+        assertEquals("com.app@@https://tapsouq.com@@" + String.valueOf(startTime), trackingInfo.toString());
 
     }
 
     public void test_toString2() throws Exception {
         String packageName = "com.app";
-        String url = "http://tapsouq.com";
+        String url = "https://tapsouq.com";
         long startTime = System.currentTimeMillis();
         TrackingInfo trackingInfo = new TrackingInfo(packageName, url, startTime);
 
-        assertFalse(("@@com.app@@http://tapsouq.com@@" + String.valueOf(startTime)).equals(trackingInfo.toString()));
+        assertFalse(("@@com.app@@https://tapsouq.com@@" + String.valueOf(startTime)).equals(trackingInfo.toString()));
 
     }
 
     public void test_parse() throws Exception {
 
-        String line = "@@com.app@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis());
+        String line = "@@com.app@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis());
         TrackingInfo trackingInfo = TrackingInfo.parse(line);
 
         assertNull(trackingInfo);
@@ -76,7 +76,7 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
 
     public void test_parse2() throws Exception {
 
-        String line = "com.app@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis());
+        String line = "com.app@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis());
         TrackingInfo trackingInfo = TrackingInfo.parse(line);
 
         assertNotNull(trackingInfo);
@@ -85,12 +85,12 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
 
     public void test_equal_samePackage() throws Exception {
         String packageName = "com.app";
-        String url = "http://tapsouq.com";
+        String url = "https://tapsouq.com";
         long startTime = System.currentTimeMillis();
         TrackingInfo trackingInfo1 = new TrackingInfo(packageName, url, startTime);
 
         String packageName2 = "com.app";
-        String url2 = "http://tapsouq.com";
+        String url2 = "https://tapsouq.com";
         long startTime2 = System.currentTimeMillis() + 1000;
         TrackingInfo trackingInfo2 = new TrackingInfo(packageName2, url2, startTime2);
 
@@ -100,12 +100,12 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
 
     public void test_equal_diffPackage() throws Exception {
         String packageName = "com.app";
-        String url = "http://tapsouq.com";
+        String url = "https://tapsouq.com";
         long startTime = System.currentTimeMillis();
         TrackingInfo trackingInfo1 = new TrackingInfo(packageName, url, startTime);
 
         String packageName2 = "com.app1";
-        String url2 = "http://tapsouq.com";
+        String url2 = "https://tapsouq.com";
         long startTime2 = System.currentTimeMillis() + 1000;
         TrackingInfo trackingInfo2 = new TrackingInfo(packageName2, url2, startTime2);
 
@@ -143,30 +143,30 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
     }
 
     public void test_getTrackInfoList_one_line_case() throws Exception {
-        String lines = "com.app@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis());
+        String lines = "com.app@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis());
         List<TrackingInfo> list = getTrackInfoList(lines);
         assertEquals(list.size(), 1);
     }
 
     public void test_getTrackInfoList_two_line_case() throws Exception {
-        String lines = "com.app@@http://tapsouq.com/0@@" + String.valueOf(System.currentTimeMillis())
-                + "##" + "com.app2@@http://tapsouq.com/1@@" + String.valueOf(System.currentTimeMillis());
+        String lines = "com.app@@https://tapsouq.com/0@@" + String.valueOf(System.currentTimeMillis())
+                + "##" + "com.app2@@https://tapsouq.com/1@@" + String.valueOf(System.currentTimeMillis());
         List<TrackingInfo> list = getTrackInfoList(lines);
         assertEquals(list.size(), 2);
     }
 
     public void test_getTrackInfoList_11_line_case() throws Exception {
-        String lines = "com.app@@http://tapsouq.com/0@@" + String.valueOf(System.currentTimeMillis())
-                + "##" + "com.app2@@http://tapsouq.com/1@@" + String.valueOf(System.currentTimeMillis())
-                + "##" + "com.app3@@http://tapsouq.com/1@@" + String.valueOf(System.currentTimeMillis())
-                + "##" + "com.app4@@http://tapsouq.com/1@@" + String.valueOf(System.currentTimeMillis())
-                + "##" + "com.app5@@http://tapsouq.com/1@@" + String.valueOf(System.currentTimeMillis())
-                + "##" + "com.app6@@http://tapsouq.com/1@@" + String.valueOf(System.currentTimeMillis())
-                + "##" + "com.app7@@http://tapsouq.com/1@@" + String.valueOf(System.currentTimeMillis())
-                + "##" + "com.app8@@http://tapsouq.com/1@@" + String.valueOf(System.currentTimeMillis())
-                + "##" + "com.app9@@http://tapsouq.com/1@@" + String.valueOf(System.currentTimeMillis())
-                + "##" + "com.app10@@http://tapsouq.com/1@@" + String.valueOf(System.currentTimeMillis())
-                + "##" + "com.app11@@http://tapsouq.com/1@@" + String.valueOf(System.currentTimeMillis());
+        String lines = "com.app@@https://tapsouq.com/0@@" + String.valueOf(System.currentTimeMillis())
+                + "##" + "com.app2@@https://tapsouq.com/1@@" + String.valueOf(System.currentTimeMillis())
+                + "##" + "com.app3@@https://tapsouq.com/1@@" + String.valueOf(System.currentTimeMillis())
+                + "##" + "com.app4@@https://tapsouq.com/1@@" + String.valueOf(System.currentTimeMillis())
+                + "##" + "com.app5@@https://tapsouq.com/1@@" + String.valueOf(System.currentTimeMillis())
+                + "##" + "com.app6@@https://tapsouq.com/1@@" + String.valueOf(System.currentTimeMillis())
+                + "##" + "com.app7@@https://tapsouq.com/1@@" + String.valueOf(System.currentTimeMillis())
+                + "##" + "com.app8@@https://tapsouq.com/1@@" + String.valueOf(System.currentTimeMillis())
+                + "##" + "com.app9@@https://tapsouq.com/1@@" + String.valueOf(System.currentTimeMillis())
+                + "##" + "com.app10@@https://tapsouq.com/1@@" + String.valueOf(System.currentTimeMillis())
+                + "##" + "com.app11@@https://tapsouq.com/1@@" + String.valueOf(System.currentTimeMillis());
         List<TrackingInfo> list = getTrackInfoList(lines);
         assertEquals(list.size(), 11);
     }
@@ -192,25 +192,25 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
         List<TrackingInfo> list = new ArrayList<>();
 
         long time = System.currentTimeMillis();
-        list.add(new TrackingInfo("com.app1", "http://tapsouq.com/1", time));
+        list.add(new TrackingInfo("com.app1", "https://tapsouq.com/1", time));
 
         String result = formatTrackingLines(list);
 
-        assertEquals(result, "com.app1@@http://tapsouq.com/1@@" + String.valueOf(time));
+        assertEquals(result, "com.app1@@https://tapsouq.com/1@@" + String.valueOf(time));
     }
 
     public void test_format_trackingLines_2_obj() throws Exception {
         List<TrackingInfo> list = new ArrayList<>();
 
         long time = System.currentTimeMillis();
-        list.add(new TrackingInfo("com.app1", "http://tapsouq.com/1", time));
-        list.add(new TrackingInfo("com.app2", "http://tapsouq.com/2", time));
+        list.add(new TrackingInfo("com.app1", "https://tapsouq.com/1", time));
+        list.add(new TrackingInfo("com.app2", "https://tapsouq.com/2", time));
 
         String result = formatTrackingLines(list);
 
 
-        String expected = "com.app1@@http://tapsouq.com/1@@" + String.valueOf(time)
-                + "##com.app2@@http://tapsouq.com/2@@" + String.valueOf(time);
+        String expected = "com.app1@@https://tapsouq.com/1@@" + String.valueOf(time)
+                + "##com.app2@@https://tapsouq.com/2@@" + String.valueOf(time);
         System.out.println(result);
         System.out.println(expected);
 
@@ -221,30 +221,30 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
         List<TrackingInfo> list = new ArrayList<>();
 
         long time = System.currentTimeMillis();
-        list.add(new TrackingInfo("com.app1", "http://tapsouq.com/1", time));
-        list.add(new TrackingInfo("com.app2", "http://tapsouq.com/2", time));
-        list.add(new TrackingInfo("com.app3", "http://tapsouq.com/2", time));
-        list.add(new TrackingInfo("com.app4", "http://tapsouq.com/2", time));
-        list.add(new TrackingInfo("com.app5", "http://tapsouq.com/2", time));
-        list.add(new TrackingInfo("com.app6", "http://tapsouq.com/2", time));
-        list.add(new TrackingInfo("com.app7", "http://tapsouq.com/2", time));
-        list.add(new TrackingInfo("com.app8", "http://tapsouq.com/2", time));
-        list.add(new TrackingInfo("com.app9", "http://tapsouq.com/2", time));
-        list.add(new TrackingInfo("com.app10", "http://tapsouq.com/2", time));
+        list.add(new TrackingInfo("com.app1", "https://tapsouq.com/1", time));
+        list.add(new TrackingInfo("com.app2", "https://tapsouq.com/2", time));
+        list.add(new TrackingInfo("com.app3", "https://tapsouq.com/2", time));
+        list.add(new TrackingInfo("com.app4", "https://tapsouq.com/2", time));
+        list.add(new TrackingInfo("com.app5", "https://tapsouq.com/2", time));
+        list.add(new TrackingInfo("com.app6", "https://tapsouq.com/2", time));
+        list.add(new TrackingInfo("com.app7", "https://tapsouq.com/2", time));
+        list.add(new TrackingInfo("com.app8", "https://tapsouq.com/2", time));
+        list.add(new TrackingInfo("com.app9", "https://tapsouq.com/2", time));
+        list.add(new TrackingInfo("com.app10", "https://tapsouq.com/2", time));
 
         String result = formatTrackingLines(list);
 
 
-        String expected = "com.app1@@http://tapsouq.com/1@@" + String.valueOf(time)
-                + "##com.app2@@http://tapsouq.com/2@@" + String.valueOf(time)
-                + "##com.app3@@http://tapsouq.com/2@@" + String.valueOf(time)
-                + "##com.app4@@http://tapsouq.com/2@@" + String.valueOf(time)
-                + "##com.app5@@http://tapsouq.com/2@@" + String.valueOf(time)
-                + "##com.app6@@http://tapsouq.com/2@@" + String.valueOf(time)
-                + "##com.app7@@http://tapsouq.com/2@@" + String.valueOf(time)
-                + "##com.app8@@http://tapsouq.com/2@@" + String.valueOf(time)
-                + "##com.app9@@http://tapsouq.com/2@@" + String.valueOf(time)
-                + "##com.app10@@http://tapsouq.com/2@@" + String.valueOf(time);
+        String expected = "com.app1@@https://tapsouq.com/1@@" + String.valueOf(time)
+                + "##com.app2@@https://tapsouq.com/2@@" + String.valueOf(time)
+                + "##com.app3@@https://tapsouq.com/2@@" + String.valueOf(time)
+                + "##com.app4@@https://tapsouq.com/2@@" + String.valueOf(time)
+                + "##com.app5@@https://tapsouq.com/2@@" + String.valueOf(time)
+                + "##com.app6@@https://tapsouq.com/2@@" + String.valueOf(time)
+                + "##com.app7@@https://tapsouq.com/2@@" + String.valueOf(time)
+                + "##com.app8@@https://tapsouq.com/2@@" + String.valueOf(time)
+                + "##com.app9@@https://tapsouq.com/2@@" + String.valueOf(time)
+                + "##com.app10@@https://tapsouq.com/2@@" + String.valueOf(time);
 
         assertEquals(result, expected);
     }
@@ -266,66 +266,66 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
     }
 
     public void test_storeTrackingInfo_null_line() throws Exception {
-        TrackingInfo obj = new TrackingInfo("com.app1", "http://tapsouq.com/1", System.currentTimeMillis());
+        TrackingInfo obj = new TrackingInfo("com.app1", "https://tapsouq.com/1", System.currentTimeMillis());
         List<TrackingInfo> list = storeTrackingInfo(obj, null);
 
         assertEquals(list.size(), 1);
     }
 
     public void test_storeTrackingInfo_empty_line() throws Exception {
-        TrackingInfo obj = new TrackingInfo("com.app1", "http://tapsouq.com/1", System.currentTimeMillis());
+        TrackingInfo obj = new TrackingInfo("com.app1", "https://tapsouq.com/1", System.currentTimeMillis());
         List<TrackingInfo> list = storeTrackingInfo(obj, "");
 
         assertEquals(list.size(), 1);
     }
 
     public void test_storeTrackingInfo_one_line() throws Exception {
-        String lines = "com.app@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis());
-        TrackingInfo obj = new TrackingInfo("com.app1", "http://tapsouq.com/1", System.currentTimeMillis());
+        String lines = "com.app@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis());
+        TrackingInfo obj = new TrackingInfo("com.app1", "https://tapsouq.com/1", System.currentTimeMillis());
         List<TrackingInfo> list = storeTrackingInfo(obj, lines);
 
         assertEquals(list.size(), 2);
     }
 
     public void test_storeTrackingInfo_duplicate_package() throws Exception {
-        String lines = "com.app@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis());
-        TrackingInfo obj = new TrackingInfo("com.app", "http://tapsouq.com/1", System.currentTimeMillis());
+        String lines = "com.app@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis());
+        TrackingInfo obj = new TrackingInfo("com.app", "https://tapsouq.com/1", System.currentTimeMillis());
         List<TrackingInfo> list = storeTrackingInfo(obj, lines);
 
         assertEquals(list.size(), 1);
     }
 
     public void test_storeTrackingInfo_duplicate_many_package() throws Exception {
-        String lines = "com.app@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
-                "##com.app2@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
-                "##com.app3@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
-                "##com.app4@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
-                "##com.app5@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
-                "##com.app6@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
-                "##com.app7@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
-                "##com.app8@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
-                "##com.app9@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
-                "##com.app10@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
-                "##com.app11@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis());
-        TrackingInfo obj = new TrackingInfo("com.app", "http://tapsouq.com/1", System.currentTimeMillis());
+        String lines = "com.app@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
+                "##com.app2@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
+                "##com.app3@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
+                "##com.app4@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
+                "##com.app5@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
+                "##com.app6@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
+                "##com.app7@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
+                "##com.app8@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
+                "##com.app9@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
+                "##com.app10@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
+                "##com.app11@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis());
+        TrackingInfo obj = new TrackingInfo("com.app", "https://tapsouq.com/1", System.currentTimeMillis());
         List<TrackingInfo> list = storeTrackingInfo(obj, lines);
 
         assertEquals(list.size(), 11);
     }
 
     public void test_storeTrackingInfo_many_package() throws Exception {
-        String lines = "com.app@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
-                "##com.app2@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
-                "##com.app3@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
-                "##com.app4@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
-                "##com.app5@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
-                "##com.app6@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
-                "##com.app7@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
-                "##com.app8@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
-                "##com.app9@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
-                "##com.app10@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
-                "##com.app11@@http://tapsouq.com@@" + String.valueOf(System.currentTimeMillis());
-        TrackingInfo obj = new TrackingInfo("com.app12", "http://tapsouq.com/1", System.currentTimeMillis());
+        String lines = "com.app@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
+                "##com.app2@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
+                "##com.app3@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
+                "##com.app4@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
+                "##com.app5@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
+                "##com.app6@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
+                "##com.app7@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
+                "##com.app8@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
+                "##com.app9@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
+                "##com.app10@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis()) +
+                "##com.app11@@https://tapsouq.com@@" + String.valueOf(System.currentTimeMillis());
+        TrackingInfo obj = new TrackingInfo("com.app12", "https://tapsouq.com/1", System.currentTimeMillis());
         List<TrackingInfo> list = storeTrackingInfo(obj, lines);
 
         assertEquals(list.size(), 12);
@@ -342,7 +342,7 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
 
     public void test_storeTrackingInfo() throws Exception{
         String packageName = "com.rashadandhamid.designs1";
-        String url = "http://tapsouq.com/sdk-action/24812/1/0/5/0/answers.com.testactivity?ads=12";
+        String url = "https://tapsouq.com/sdk-action/24812/1/0/5/0/answers.com.testactivity?ads=12";
         long time = 1485242620826L;
         TrackingInfo trackingInfo = new TrackingInfo(packageName, url, time);
         TrackingInfo.storeTrackingInfo(this.getContext(), trackingInfo);
@@ -357,11 +357,11 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
                 "com.rashadandhamid.designs1",
                 "com.rashadandhamid.designs"};
 
-        String[] url = {"http://tapsouq.com/sdk-action/24812/1/0/5/0/answers.com.testactivity?ads=12",
-                "http://tapsouq.com/sdk-action/24812/1/0/5/0/answers.com.testactivity?ads=12",
-                "http://tapsouq.com/sdk-action/24812/1/0/5/0/answers.com.testactivity?ads=12",
-                "http://tapsouq.com/sdk-action/24812/1/0/5/0/answers.com.testactivity?ads=12",
-                "http://tapsouq.com/sdk-action/24812/1/0/5/0/answers.com.testactivity?ads=12"};
+        String[] url = {"https://tapsouq.com/sdk-action/24812/1/0/5/0/answers.com.testactivity?ads=12",
+                "https://tapsouq.com/sdk-action/24812/1/0/5/0/answers.com.testactivity?ads=12",
+                "https://tapsouq.com/sdk-action/24812/1/0/5/0/answers.com.testactivity?ads=12",
+                "https://tapsouq.com/sdk-action/24812/1/0/5/0/answers.com.testactivity?ads=12",
+                "https://tapsouq.com/sdk-action/24812/1/0/5/0/answers.com.testactivity?ads=12"};
 
         long now = 1485249999328L + 19 * DateUtils.MINUTE_IN_MILLIS;
         long[] time = new long[] {now,

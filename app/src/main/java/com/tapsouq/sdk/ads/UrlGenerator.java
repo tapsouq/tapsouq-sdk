@@ -18,7 +18,7 @@ public class UrlGenerator {
     public static String createDevice2(String advertisingId, String deviceInfo) {
 
         return
-                getBaseUrl(DATA.http, DATA.dslash, DATA.tapsouq, DATA.dot, DATA.net, "", "")
+                getBaseUrl(DATA.https, DATA.dslash, DATA.tapsouq, DATA.dot, DATA.net, "", "")
                 + DATA.slash1 +
                 DATA.CREATE_DEVICE + DATA.qmarq +
                 addParam(DATA.a, advertisingId) + DATA.and +
@@ -31,7 +31,7 @@ public class UrlGenerator {
 
     public static String updateDevice2(String deviceId, String deviceInfo) {
 
-        return getBaseUrl(DATA.http, DATA.dslash, DATA.tapsouq, DATA.dot, DATA.net, "", "")
+        return getBaseUrl(DATA.https, DATA.dslash, DATA.tapsouq, DATA.dot, DATA.net, "", "")
                 + DATA.slash1 +
                 DATA.UPDATE_DEVICE + DATA.qmarq +
                 addParam(DATA.b, deviceId) + DATA.and +
@@ -60,7 +60,7 @@ public class UrlGenerator {
                                        String adCreativeId, String packageName, String shownCreativeParams,
                                        int mAppId, int mAppUserId, int mCampId, int mCampUserId, String mCountryId,
                                        String countryTier, String sdk_version, String testMode, String sLetters,  String scode) {
-        return getBaseUrl(DATA.http, DATA.dslash, DATA.tapsouq, DATA.dot, DATA.net, "", "")
+        return getBaseUrl(DATA.https, DATA.dslash, DATA.tapsouq, DATA.dot, DATA.net, "", "")
                 + DATA.slash1 +
                 DATA.SDK_ACTION + DATA.qmarq
                 + addParam(DATA.b, deviceId) + DATA.and

@@ -21,7 +21,7 @@
 //
 //
 //
-//        return getBaseUrl(DATA.http, DATA.dslash, DATA.tapsouq, DATA.dot, DATA.com, "", "")
+//        return getBaseUrl(DATA.https, DATA.dslash, DATA.tapsouq, DATA.dot, DATA.com, "", "")
 //                + DATA.slash1 +
 //                DATA.CREATE_DEVICE + DATA.slash2 +
 //                PLATFORM + DATA.slash3 +
@@ -32,7 +32,7 @@
 //
 //    public static String updateDevice2(String deviceId, String deviceInfo) {
 //
-//        return getBaseUrl(DATA.http, DATA.dslash, DATA.tapsouq, DATA.dot, DATA.com, "", "")
+//        return getBaseUrl(DATA.https, DATA.dslash, DATA.tapsouq, DATA.dot, DATA.com, "", "")
 //                + DATA.slash1 +
 //                DATA.UPDATE_DEVICE + DATA.slash2 +
 //                deviceId + DATA.slash3 +
@@ -58,7 +58,7 @@
 //                                       String adCreativeId, String packageName, String shownCreativeParams,
 //                                       int mAppId, int mAppUserId, int mCampId, int mCampUserId, String mCountryId,
 //                                       String countryTier, String sdk_version, boolean testMode, String sId) {
-//        return getBaseUrl(DATA.http, DATA.dslash, DATA.tapsouq, DATA.dot, DATA.com, "", "")
+//        return getBaseUrl(DATA.https, DATA.dslash, DATA.tapsouq, DATA.dot, DATA.com, "", "")
 //                + DATA.slash1 +
 //                DATA.SDK_ACTION + DATA.slash2 +
 //                deviceId + DATA.slash3 +

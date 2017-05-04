@@ -1,9 +1,6 @@
 package com.tapsouq.sdk.util;
 
-/**
- * Created by dell on 1/16/2017.
- */
-//
+
 public class DATA {
     //
     //http://tapsouq.com/sdk-action/11103/1/0/13/0/com.smartapps.videodownloaderforfacebookpro.free.android.fb
@@ -54,7 +51,7 @@ public class DATA {
     public static String a9 = "up";
     public static String a10 = "Main";
     public static String a11 = "Benefits";
-    public static String http = "http";
+    public static String https = "https";
     public static String a13 = "0.9";
     public static String a14 = "of";
     public static String a15 = "monetization";

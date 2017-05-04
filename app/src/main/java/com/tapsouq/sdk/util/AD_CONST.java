@@ -25,7 +25,7 @@ public class AD_CONST {
     public static final String APP_EXTERNAL_FOLDER = "tapsouq";
     public static final String ID_FILE = "tap-souq-id.txt";
 
-    public static final String SERVER_URL_OF_IMAGES = "http://www.tapsouq.com/public/uploads/ad-images/";
+    public static final String SERVER_URL_OF_IMAGES = "https://www.tapsouq.com/public/uploads/ad-images/";
 
     //public static final String SHARED_PREFERENCES_NAME = "tapsouq_preferences"; //future
     public static final String SHARED_PREFERENCES_NAME = "tapsouq";
