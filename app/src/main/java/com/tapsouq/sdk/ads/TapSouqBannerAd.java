@@ -127,6 +127,9 @@ public class TapSouqBannerAd extends LinearLayout implements TapSouqAd {
             PreferencesUtils.setLastRequestMillis(getContext(), adUnitID);
             sendAction(actionName);
             Log.i(AD_CONST.LOG_TAG, "Loading ad unit " + adUnitID);
+        } else if (!PreferencesUtils.isFreqCapPassed(getContext(), adUnitID)){
+            if(listener != null)
+                listener.adFailed();
         }
     }
 

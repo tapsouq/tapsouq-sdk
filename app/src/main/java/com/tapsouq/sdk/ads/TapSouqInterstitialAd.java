@@ -109,7 +109,9 @@ public class TapSouqInterstitialAd implements TapSouqAd {
             PreferencesUtils.setLastRequestMillis(context, adUnitID);
             sendAction(actionName);
             Log.i(AD_CONST.LOG_TAG, "Loading ad unit " + adUnitID);
-
+        } else if (!PreferencesUtils.isFreqCapPassed(context, adUnitID)){
+            if(listener != null)
+                listener.adFailed();
         }
     }
 
