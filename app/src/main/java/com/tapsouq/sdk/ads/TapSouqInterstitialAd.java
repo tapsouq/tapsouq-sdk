@@ -169,27 +169,10 @@ public class TapSouqInterstitialAd implements TapSouqAd {
             requestId = "1000000";
         }
 
-
-        String sLetters = "";
-        if (actionName == AD_CONST.ACTION_AD_REQUEST) {
-            char c = (char) (System.currentTimeMillis() % 26 + 'a');
-            sLetters = c + letters;
-            Log.d(AD_CONST.LOG_TAG, "sLetter: " + sLetters);
-        } else {
-            //sLetters = SdkId.getAllLetters(actionName-1, requestId, letters);
-            Log.d(AD_CONST.LOG_TAG, "sLetter: " + sLetters);
-
-        }
-
-//        String scode = SdkId.generateSdkId(sLetters); // temp until new authorization method
-        sLetters = ""; //temp until new authorization method
-        String scode = ""; // temp ntil new authorization method
-        Log.d(AD_CONST.LOG_TAG, "scode: " + scode);
-
         String finalUrl = UrlGenerator.getActionUrl2(deviceId, actionName, requestId, adPlacementId,
                 adCreative.getId(), getContext().getPackageName(), PreferencesUtils.getShownCreativeParams(getContext()),
                 adCreative.getAppId(), adCreative.getAppUserId(), adCreative.getCampId(), adCreative.getCampUserId(),
-                countryId, countryTier, AD_CONST.TAP_SDK_VERSION, testValue, sLetters, scode);
+                countryId, countryTier, AD_CONST.TAP_SDK_VERSION, testValue);
 
 
         Log.d(AD_CONST.LOG_TAG, finalUrl);

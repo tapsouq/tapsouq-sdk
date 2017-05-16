@@ -11,7 +11,7 @@ public class AD_CONST {
     public static final String CONV_MSG_INSTALLED = "App removed from tracking info after it installed";
     public static final String CONV_MSG_NO_CONVERSION = "No conversion found yet";
     public static final String LAST_TIME_DEVICE_ID_SYNC = "LAST_TIME_DEVICE_ID_SYNC";
-    public static String TAP_SDK_VERSION = "1.01";
+    public static String TAP_SDK_VERSION = "1.07";
 
     public static final int ACTION_AD_REQUEST = 1;
     public static final int ACTION_AD_SHOWN = 2;

@@ -253,31 +253,18 @@ public class TapSouqBannerAd extends LinearLayout implements TapSouqAd {
         String countryId = countryInfo[0];
         String countryTier = countryInfo[3];
         String testValue = "";
+
         if(testMode) {
             testValue = "banner";
             requestId = "1000000";
 
         }
 
-        String sLetters = "";
-        if(actionName == AD_CONST.ACTION_AD_REQUEST)
-        {
-            char c = (char) (System.currentTimeMillis()%26 + 'a');
-            sLetters = c + letters;
-            Log.d(AD_CONST.LOG_TAG, "sLetter: " + sLetters);
-        } else {
-            //sLetters = SdkId.getAllLetters(actionName-1, requestId, letters);
-        }
-
-//        String scode = SdkId.generateSdkId(sLetters); // temp until new authorization method
-        sLetters = ""; //temp until new authorization method
-        String scode = ""; // temp ntil new authorization method
-        Log.d(AD_CONST.LOG_TAG, "scode: " + scode);
 
         String finalUrl = UrlGenerator.getActionUrl2(deviceId, actionName, requestId, adPlacementId,
                 adCreative.getId(), getContext().getPackageName(), PreferencesUtils.getShownCreativeParams(getContext()),
                 adCreative.getAppId(), adCreative.getAppUserId(), adCreative.getCampId(), adCreative.getCampUserId(),
-                countryId, countryTier, AD_CONST.TAP_SDK_VERSION, testValue, sLetters, scode);
+                countryId, countryTier, AD_CONST.TAP_SDK_VERSION, testValue);
 
         Log.d(AD_CONST.LOG_TAG, finalUrl);
         if (actionName == AD_CONST.ACTION_AD_REQUEST)

@@ -9,6 +9,7 @@ package com.tapsouq.sdk.util;
  * 1. change sdk_version
  * 2. change log level
  * 3. comment out //e.printStackTrace()
+ * 4. minify and shrink = true
  */
 
 public class Log {
@@ -19,7 +20,7 @@ public class Log {
     private static int DEBUG = 2;
     private static int VERBOSE = 1;
 
-    //private static int LEVEL = DEBUG; // DEBUG USED IN USE IN DEVELOPMENT MODE
+//    private static int LEVEL = DEBUG; // DEBUG USED IN USE IN DEVELOPMENT MODE
     private static int LEVEL = INFO; // INFO USED IN PRODUCTION MODE
 
     public static void e(String tag, String message){

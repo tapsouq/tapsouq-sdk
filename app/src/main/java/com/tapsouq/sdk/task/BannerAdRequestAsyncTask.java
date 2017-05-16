@@ -40,6 +40,7 @@ public class BannerAdRequestAsyncTask extends AsyncTask<String, Void, Boolean> {
             HttpURLConnection conn = (HttpURLConnection) u.openConnection();
             conn.setRequestMethod("GET");
 
+
             conn.connect();
             InputStream is = conn.getInputStream();
 

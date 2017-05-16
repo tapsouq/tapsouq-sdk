@@ -3,6 +3,10 @@ package com.tapsouq.sdk.ads;
 import com.tapsouq.sdk.util.AD_CONST;
 import com.tapsouq.sdk.util.DATA;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 /**
  * Created by dell on 10/25/2016.
  */
@@ -59,27 +63,32 @@ public class UrlGenerator {
     public static String getActionUrl2(String deviceId, int actionName, String requestId, String adPlacementId,
                                        String adCreativeId, String packageName, String shownCreativeParams,
                                        int mAppId, int mAppUserId, int mCampId, int mCampUserId, String mCountryId,
-                                       String countryTier, String sdk_version, String testMode, String sLetters,  String scode) {
-        return getBaseUrl(DATA.https, DATA.dslash, DATA.tapsouq, DATA.dot, DATA.net, "", "")
-                + DATA.slash1 +
-                DATA.SDK_ACTION + DATA.qmarq
-                + addParam(DATA.b, deviceId) + DATA.and
+                                       String countryTier, String sdk_version, String testMode) {
+
+        String params = addParam(DATA.b, deviceId) + DATA.and
+                + addParam(DATA.i, mCountryId) + DATA.and
+                + addParam(DATA.k, sdk_version) + DATA.and
                 + addParam(DATA.l, actionName) + DATA.and
                 + addParam(DATA.m, requestId) + DATA.and
-                + addParam(DATA.u, sLetters) + DATA.and
                 + addParam(DATA.n, adCreativeId) + DATA.and
                 + addParam(DATA.o, adPlacementId) + DATA.and
                 + addParam(DATA.p, mAppId) + DATA.and
                 + addParam(DATA.q, mCampId) + DATA.and
                 + addParam(DATA.r, mAppUserId) + DATA.and
                 + addParam(DATA.s, mCampUserId) + DATA.and
-                + addParam(DATA.i, mCountryId) + DATA.and
                 + addParam(DATA.t, countryTier) + DATA.and
                 + addParam(DATA.v, packageName) + DATA.and
-                + addParam(DATA.k, sdk_version) + DATA.and
-                + addParam(DATA.x, testMode) + DATA.and
-                + addParam(DATA.y, scode) + DATA.and
-                + addParam(DATA.w, shownCreativeParams);
+                + addParam(DATA.x, testMode);
+
+        String query = params.replaceAll(DATA.and, "");
+        String pk = "HB5FTxbt59j7wSnQm5UY34";
+        String h = en(pk + query);
+        params += DATA.and + addParam(DATA.z, h);
+
+        return getBaseUrl(DATA.https, DATA.dslash, DATA.tapsouq, DATA.dot, DATA.net, "", "")
+                + DATA.slash1 +
+                DATA.SDK_ACTION + DATA.qmarq
+                + params;
     }
 
     private static String addParam(String key, int value) {
@@ -96,4 +105,23 @@ public class UrlGenerator {
         return key + DATA.equal + value;
     }
 
+    private static String en(String query){
+        StringBuffer hashString = new StringBuffer();
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(query.getBytes("UTF-8"));
+            for(int i=0; i<32; i++){
+//                hashString += String.format("%02x", hash[i]);
+                hashString.append(String.format("%02x", hash[i]));
+
+            }
+            return hashString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }
